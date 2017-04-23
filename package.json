@@ -1,0 +1,113 @@
+{
+  "name": "swanky-processor-jsdoc",
+  "description": "JSDoc plugin for Swanky Docs",
+  "homepage": "https://github.com/swanky-docs/swanky-processor-jsdoc#readme",
+  "bugs": {
+    "url": "https://github.com/swanky-docs/swanky-processor-jsdoc/issues"
+  },
+  "license": "ISC",
+  "main": "src/index.js",
+  "author": "Rod Leviton <rod@rodleviton.com>",
+  "contributors": [
+    "Rod Leviton <rod@rodleviton.com>",
+    "Brett Uglow <u_glow@hotmail.com>"
+  ],
+  "scripts": {
+    "pre-release": "npm-run-all verify test:unit:coverage build ",
+    "build": "npm run clean:prod",
+    "clean:prod": "rimraf build/",
+    "commit": "git-cz",
+    "dev": "npm run verify:watch",
+    "exact-semver": "exact-semver",
+    "report-coverage": "cat ./coverage/coverage-final.json | codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "start": "npm run dev",
+    "jest": "jest",
+    "test": "NODE_ENV=test npm run test:unit",
+    "test:unit": "jest --watch --coverage",
+    "test:unit:debug": "node --debug-brk ./node_modules/.bin/jest -i",
+    "test:unit:coverage": "NODE_ENV=test jest --coverage --silent",
+    "verify": "npm run verify:js --silent",
+    "verify:js": "eslint -c config/verify/.eslintrc \"src/**/*.js\" \"test/**/*.js\" \"config/**/*.js\" && echo verify:js success",
+    "verify:js:watch": "chokidar 'src/**/*.js' 'test/**/*.js' 'config/**/*.js' -c 'npm run verify:js' --initial --silent",
+    "verify:watch": "npm run verify:js:watch --silent"
+  },
+  "devDependencies": {
+    "angular": "1.6.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "chokidar-cli": "1.2.0",
+    "codecov.io": "0.1.6",
+    "cz-conventional-changelog": "2.0.0",
+    "cz-customizable": "5.0.0",
+    "cz-customizable-ghooks": "1.5.0",
+    "eslint": "3.19.0",
+    "eslint-config-defaults": "9.0.0",
+    "eslint-plugin-node": "4.2.2",
+    "exact-semver": "1.2.0",
+    "ghooks": "2.0.0",
+    "istanbul": "0.4.5",
+    "jest-cli": "19.0.2",
+    "npm-run-all": "4.0.2",
+    "nunjucks": "3.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "rimraf": "2.6.1",
+    "semantic-release": "^6.3.2",
+    "sinon": "2.1.0",
+    "validate-commit-msg": "2.12.1"
+  },
+  "dependencies": {
+    "babel-standalone": "6.23.1",
+    "codemirror": "5.25.0",
+    "dgeni": "0.4.2",
+    "dgeni-packages": "0.16.1",
+    "he": "1.1.0",
+    "lodash": "4.17.2",
+    "showdown": "1.5.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/release/commitMessageConfig.js"
+    },
+    "ghooks": {
+      "pre-commit": "npm run exact-semver",
+      "pre-push": "npm-run-all verify test:unit:coverage --silent"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/swanky-docs/swanky-processor-jsdo.git",
+    "type": "git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "rootDir": "src",
+    "collectCoverageFrom": [
+      "*.js",
+      "**/*.js",
+      "!__tests__/fixtures/**",
+      "!bootstrap/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "version": "0.0.0-development"
+}
