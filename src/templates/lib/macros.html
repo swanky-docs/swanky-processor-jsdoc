@@ -50,16 +50,19 @@
   </table>
 {%- endmacro -%}
 
-{%- macro liveEdit(onInitFn, outputElementCSSClassName, content, liveEdit) %}
+
+{%- macro liveEdit(onInitFn, outputElementCSSClassName, example, framework, liveEdit) %}
   <textarea id="{$ outputElementCSSClassName $}_editor"
             data-output="{$ outputElementCSSClassName $}"
-            class="react-live-editor"
-            style="display:none" rows="10">{$ content $}</textarea>
+            class="{$ framework $}-live-editor"
+            style="display:none" rows="10">{$ example $}</textarea>
 
   <script>
-    window.addEventListener('load', () => {
+    window.onInitFn = window.onInitFn || function() {};
+
+    window.addEventListener('load', function() {
       if ({$ onInitFn $}) {
-        {$ onInitFn $}({$ liveEdit $});
+        {$ onInitFn $}('{$ outputElementCSSClassName $}_editor', {$ liveEdit $}, '{$ framework $}');
       }
     });
   </script>

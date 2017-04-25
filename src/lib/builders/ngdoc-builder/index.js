@@ -8,36 +8,22 @@ const Package = require('dgeni').Package;
 // Create empty page object ready to collect data
 let page = {};
 
-const JSDocBuilder = function(item, doc) {
+const NGDocBuilder = function(item, doc) {
   page.item = item;
   page.data = doc;
 };
 
-JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
-  require('dgeni-packages/jsdoc'),
-  require('dgeni-packages/nunjucks')
+NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
+  require('dgeni-packages/ngdoc')
 ])
   // Accept relative links to external files for examples
   .processor('examplesProcessor', require('./processors/examples-processor'))
-  .config(function(parseTagsProcessor, getInjectables) {
-    parseTagsProcessor.tagDefinitions =
-      parseTagsProcessor.tagDefinitions.concat(getInjectables(require('./tag-defs')));
-  })
-  // Configure the jsdocFileReader to support JS & JSX
-  .config(function(jsdocFileReader) {
-    jsdocFileReader.defaultPattern = /\.jsx?$/;
-  })
   .config(function(renderDocsProcessor) {
     // Provide the css map to the template rendering engine
     renderDocsProcessor.extraData.styles = page.data.meta.cssMap;
 
     // Make available option for specific framework
-    if (page.item.preprocessor['swanky-processor-jsdoc'] &&
-      page.item.preprocessor['swanky-processor-jsdoc'].hasOwnProperty('framework')) {
-      renderDocsProcessor.extraData.framework = page.item.preprocessor['swanky-processor-jsdoc'].framework;
-    } else {
-      renderDocsProcessor.extraData.framework = 'js';
-    }
+    renderDocsProcessor.extraData.framework = 'angular';
 
     // should we enable the live edit region?
     if (page.item.preprocessor['swanky-processor-jsdoc'] &&
@@ -69,9 +55,7 @@ JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
       variableEnd: '$}'
     };
   })
-  .config(function(templateFinder, templateEngine, renderDocsProcessor) {
-    const framework = renderDocsProcessor.extraData.framework;
-
+  .config(function(templateFinder, templateEngine) {
     // Read template location from Swanky config
     if (page.item.preprocessor['swanky-processor-jsdoc'] && page.item.preprocessor['swanky-processor-jsdoc'].hasOwnProperty('templates')) {
       templateFinder.templateFolders.unshift(path.join(process.cwd(), `${page.item.preprocessor['swanky-processor-jsdoc'].templates}/`));
@@ -79,16 +63,12 @@ JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
       templateFinder.templateFolders.unshift(path.join(__dirname, '../../../templates/'));
     }
 
-    // templateFinder.templatePatterns.unshift('api/component.template.html');
-
-    // console.log('framework', framework);
-    // console.log('kind', doc.kind);
-    // console.log('area', doc.area);
-    // console.log('id', doc.id);
-
     templateFinder.templatePatterns = [
-      framework + '/${ doc.kind }.template.html',
+      'angular/${ doc.docType }.template.html',
+      'angular/${ doc.kind }.template.html',
+      '${doc.area}/${ doc.docType }.template.html',
       '${doc.area}/${ doc.kind }.template.html',
+      '${ doc.docType }.template.html',
       '${ doc.kind }.template.html'
     ].concat(templateEngine.templatePatterns);
 
@@ -129,4 +109,4 @@ function recursiveReaddirSync(dir) {
   return list;
 }
 
-module.exports = JSDocBuilder;
+module.exports = NGDocBuilder;
