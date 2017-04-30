@@ -15,7 +15,7 @@ beforeEach(() => {
   };
 
   mockJSItem = {
-    contentSrc: path.join(__dirname, './../__mocks__/__fixtures__/angular-component.js'),
+    contentSrc: path.join(__dirname, './../__mocks__/__fixtures__/angular-component.template.html'),
     preprocessor: {
       'swanky-processor-angular': {}
     }

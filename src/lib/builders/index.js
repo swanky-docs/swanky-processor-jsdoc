@@ -1,9 +1,9 @@
 'use strict';
 
 const frameworkBuilderMap = {
-  'react': 'jsdoc-builder',
-  'angular': 'ngdoc-builder',
-  'js': 'jsdoc-builder'
+  'react': './jsdoc-builder',
+  'angular': './ngdoc-builder',
+  'js': './jsdoc-builder'
 };
 
 module.exports = function(item, page, framework) {

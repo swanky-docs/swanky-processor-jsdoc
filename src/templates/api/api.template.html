@@ -55,7 +55,7 @@
           <h4 class="{$ styles.h4 $}">Live Edit</h4>
         {% endif -%}
 
-        {$ lib.liveEdit('onReactInitFn', 'component-example-' + doc.aliases[0] + loop.index, example, isLiveEdit) $}
+        {$ lib.liveEdit('onInitFn', 'component-example-' + doc.aliases[0] + loop.index, example, framework, isLiveEdit) $}
       {%- endfor -%}
     {% endif -%}
   {% endblock %}
