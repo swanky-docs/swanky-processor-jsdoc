@@ -12,7 +12,9 @@ const ROOT_MOD_NAME = 'swanky$$ModuleRoot';
  * @param dependentModulesArr   Format: {'com.feature.moduleName': moduleObj, ...}
  */
 module.exports = function (dependentModulesMap) {
-  const dependentModulesArr = Object.keys(dependentModulesMap).map((key) => dependentModulesMap[key]);
+  const dependentModulesArr = Object.keys(dependentModulesMap).map(function(key) {
+    return dependentModulesMap[key];
+  });
 
   angular.module(ROOT_MOD_NAME, dependentModulesArr);
 
