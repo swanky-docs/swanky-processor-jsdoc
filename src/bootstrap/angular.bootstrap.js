@@ -5,8 +5,9 @@
 
 // Assume Angular is included by host project
 const angular = require('angular');
-const editorBootstrap = require('./editor.bootstrap');
 const ROOT_MOD_NAME = 'swanky$$ModuleRoot';
+
+require('./editor.bootstrap');
 
 /*
  * @param dependentModulesArr   Format: {'com.feature.moduleName': moduleObj, ...}

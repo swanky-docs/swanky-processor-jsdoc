@@ -7,7 +7,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-const editorBootstrap = require('./editor.bootstrap');
+require('./editor.bootstrap');
 
 /*
  * @param dependentModulesArr   Format: {ComponentName: function ComponentName(...) {}, DatePicker: function DatePicker()...}

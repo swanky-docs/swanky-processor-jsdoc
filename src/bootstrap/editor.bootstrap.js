@@ -6,13 +6,6 @@ require('codemirror/mode/htmlmixed/htmlmixed');
 require('codemirror/lib/codemirror.css');
 require('codemirror/mode/javascript/javascript.js');
 
-// framework specific compile functions
-const compile = {
-  js: require('./compile/js.compile'),
-  angular: require('./compile/angular.compile'),
-  react: require('./compile/react.compile')
-};
-
 module.exports = (function() {
 
   // setup code mirror instances for live editing
@@ -55,7 +48,8 @@ module.exports = (function() {
 
   // start the rendering
   function onInitFn(exampleId, isLiveEdit, framework) {
-    const compileFn = compile[framework];
+    // framework specific compile functions
+    const compileFn = require('./compile/' + framework + '.compile');
 
     if (isLiveEdit) {
       setupLiveEdit(exampleId, compileFn);
