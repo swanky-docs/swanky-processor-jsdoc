@@ -15,8 +15,12 @@ const JSDocBuilder = function(item, doc) {
 
 JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
   require('dgeni-packages/jsdoc'),
-  require('dgeni-packages/nunjucks')
+  require('dgeni-packages/nunjucks'),
+  require('dgeni-packages/links')
 ])
+  // Replaces the default link tag rendering with our custom one
+  .factory(require('../../links/link'))
+
   // Accept relative links to external files for examples
   .processor('examplesProcessor', require('./processors/examples-processor'))
   .config(function(parseTagsProcessor, getInjectables) {

@@ -1,0 +1,204 @@
+
+    <header class="">
+      <h4 class=""><strong>name:</strong> <code class="">MyButton</code></h4>
+    </header>
+    <div class="">
+      <p>See <a href="http://usejsdoc.org/tags-inline-link.html">http://usejsdoc.org/tags-inline-link.html</a> for how to use inline links.
+These links <a href="http://usejsdoc.org/tags-inline-link.html">Odecee</a> also work.
+Also part of the description: This class requires the modules <a href="module:xyzcorp/helper">helper</a> and
+<a href="module:xyzcorp/helper.ShinyWidget#polish">ShinyWidget</a>.</p>
+<p>Nunjucks converts full URLs automatically.</p>
+<p>A description.</p>
+    </div>
+    <fieldset class="">
+      <legend class="">Deprecated API</legend>
+      <p>Since 1976</p>
+    </fieldset>
+      <h4 class="">Dependencies</h4>
+      <ul class="">
+          <li class="">module:xyzcorp/helper</li>
+          <li class="">xyzcorp/helper.ShinyWidget#polish</li>
+      </ul>
+      <h4 class="">Example</h4><div class=" component-example-MyButton1">
+          <button>Submit</button>
+<label>Submit button</label>
+        </div>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+          <h4 class="">Live Edit</h4>
+  <textarea id="component-example-MyButton1_editor"
+            data-output="component-example-MyButton1"
+            class="angular-live-editor"
+            style="display:none" rows="10"><button>Submit</button>
+<label>Submit button</label></textarea>
+  <script>
+    window.onInitFn = window.onInitFn || function() {};
+    window.addEventListener('load', function() {
+      if (onInitFn) {
+        onInitFn('component-example-MyButton1_editor', true, 'angular');
+      }
+    });
+  </script>
+<section class="">
+  <h4 class="">Arguments</h4>
+  <table class="  ">
+    <thead class="">
+    <tr class="">
+      <th class="">Param</th>
+      <th class="">Type</th>
+      <th class="">Details</th>
+    </tr>
+    </thead>
+    <tbody class="">
+      <tr class="">
+        <td class="">
+          colour1
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>The first color, in hexadecimal format</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          colour2
+            <div><em class="">(optional)</em></div>
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>Optional second colour (Google closure syntax)</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          manager
+            <div><em class="">(optional)</em></div>
+        </td>
+        <td class="">
+          Object
+        </td>
+        <td class="">
+          <p>Optional manager with a default value</p>
+          <p><em>(default: John Wayne)</em></p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          manager.name
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>The name of the employee.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          manager.department
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>The employee&#39;s department.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          employees
+        </td>
+        <td class="">
+          Object[]
+        </td>
+        <td class="">
+          <p>The employees who are responsible for the project.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          employees[].name
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>The name of an employee.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          employees[].department
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>The employee&#39;s department.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<h4 class="">Events</h4>
+<ul class="">
+  <li id="$routeChangeSuccess" class="">
+    <h5 class="">$routeChangeSuccess</h5>
+    <p>Broadcasted after a route dependencies are resolved.
+<a href="ng.directive:ngView">ngView</a> listens for the directive
+to instantiate the controller and render the view.</p>
+    <h6 class="">Type:</h6>
+    <div class="">broadcast</div>
+    <h6 class="">Target:</h6>
+    <div class="">root scope</div>
+    <section class="">
+      <h5 class="">Parameters</h5>
+  <table class="  ">
+    <thead class="">
+    <tr class="">
+      <th class="">Param</th>
+      <th class="">Type</th>
+      <th class="">Details</th>
+    </tr>
+    </thead>
+    <tbody class="">
+      <tr class="">
+        <td class="">
+          angularEvent
+        </td>
+        <td class="">
+          Object
+        </td>
+        <td class="">
+          <p>Synthetic event object.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          current
+        </td>
+        <td class="">
+          Route
+        </td>
+        <td class="">
+          <p>Current route information.</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          previous
+        </td>
+        <td class="">
+          Route,Undefined
+        </td>
+        <td class="">
+          <p>Previous route information, or undefined if current is first route entered.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </section></li>
+  </ul>
