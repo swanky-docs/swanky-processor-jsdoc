@@ -16,6 +16,9 @@ const NGDocBuilder = function(item, doc) {
 NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
   require('dgeni-packages/ngdoc')
 ])
+  // Replaces the default link tag rendering with our custom one
+  .factory(require('../../links/link'))
+
   // Accept relative links to external files for examples
   .processor('examplesProcessor', require('./processors/examples-processor'))
   .config(function(renderDocsProcessor) {
