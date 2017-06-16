@@ -25,4 +25,13 @@ describe('swankyAngularDocs processing modules', () => {
       .resolves.toEqual(expectedOutput);
   });
 
+  xit('should generate full module docs with TypeScript', () => {
+    const expectedOutput = getOutputFixture('module-minimal-js.html');
+
+    // expect(expectedOutput).toContain('>myModule<');
+    // expect(expectedOutput).toContain('>Module Components<');
+
+    return expect(swankyAngularDocs(...getInputFixture('module-full-js.ts', 'ts')).then(trimGeneratedOutput))
+      .resolves.toEqual(expectedOutput);
+  });
 });

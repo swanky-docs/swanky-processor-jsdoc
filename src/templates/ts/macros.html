@@ -1,0 +1,20 @@
+{# Defines macros for reusable templates. #}
+{% macro method(method) -%}
+  {% include 'ts/method.template.html' %}
+{% endmacro %}
+
+{% macro property(property) -%}
+  {% include 'ts/property.template.html' %}
+{% endmacro %}
+
+{% macro methodList(methodList) -%}
+  {% include 'ts/method-list.template.html' %}
+{% endmacro %}
+
+{% macro propertyList(propertyList) -%}
+  {% include 'ts/property-list.template.html' %}
+{% endmacro %}
+
+{% macro class(class) -%}
+  {% include 'ts/class.template.html' %}
+{% endmacro %}
