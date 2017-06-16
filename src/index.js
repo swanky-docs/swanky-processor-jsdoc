@@ -15,7 +15,7 @@ function swankyJSDoc(page, item) {
 }
 
 function getFramework(item) {
-  const validFrameworkOptions = ['react', 'angular', 'js'];
+  const validFrameworkOptions = ['react', 'angular', 'js', 'ts'];
 
   // Handle specific framework option if it exists
   const framework = item.preprocessor['swanky-processor-jsdoc'].framework ?
