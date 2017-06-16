@@ -72,7 +72,7 @@ NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
       '${doc.area}/${ doc.docType }.template.html',
       '${doc.area}/${ doc.kind }.template.html',
       '${ doc.docType }.template.html',
-      '${ doc.kind }.template.html'
+      '${ doc.kind }.template.html',
     ].concat(templateEngine.templatePatterns);
 
     // add fileDependencies to webpack config

@@ -16,7 +16,7 @@ const JSDocBuilder = function(item, doc) {
 JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
   require('dgeni-packages/jsdoc'),
   require('dgeni-packages/nunjucks'),
-  require('dgeni-packages/links')
+  require('dgeni-packages/links'),
 ])
   // Replaces the default link tag rendering with our custom one
   .factory(require('../../links/link'))
@@ -29,7 +29,7 @@ JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
   })
   // Configure the jsdocFileReader to support JS & JSX
   .config(function(jsdocFileReader) {
-    jsdocFileReader.defaultPattern = /\.jsx?$/;
+    jsdocFileReader.defaultPattern = /\.(?:jsx?|html)$/;   // Non-capturing group
   })
   .config(function(renderDocsProcessor) {
     // Provide the css map to the template rendering engine
@@ -83,7 +83,6 @@ JSDocBuilder.prototype.Package = new Package('jsdoc-builder', [
       templateFinder.templateFolders.unshift(path.join(__dirname, '../../../templates/'));
     }
 
-    // templateFinder.templatePatterns.unshift('api/component.template.html');
 
     // console.log('framework', framework);
     // console.log('kind', doc.kind);
