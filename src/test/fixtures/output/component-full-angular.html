@@ -1,6 +1,6 @@
 
     <header class="">
-      <h4 class=""><strong>name:</strong> <code class="">MyButton</code></h4>
+      <h4 class=""><strong>Name:</strong> <code class="">MyButton</code></h4>
     </header>
     <div class="">
       <p>See <a href="http://usejsdoc.org/tags-inline-link.html">http://usejsdoc.org/tags-inline-link.html</a> for how to use inline links.
@@ -63,7 +63,7 @@ Also part of the description: This class requires the modules <a href="module:xy
       <tr class="">
         <td class="">
           colour2
-            <div><em class="">(optional)</em></div>
+          <div><em class="">(optional)</em></div>
         </td>
         <td class="">
           string
@@ -75,14 +75,14 @@ Also part of the description: This class requires the modules <a href="module:xy
       <tr class="">
         <td class="">
           manager
-            <div><em class="">(optional)</em></div>
+          <div><em class="">(optional)</em></div>
         </td>
         <td class="">
           Object
         </td>
         <td class="">
           <p>Optional manager with a default value</p>
-          <p><em>(default: John Wayne)</em></p>
+          <p><em class="">(default: John Wayne)</em></p>
         </td>
       </tr>
       <tr class="">
@@ -147,15 +147,18 @@ Also part of the description: This class requires the modules <a href="module:xy
 <ul class="">
   <li id="$routeChangeSuccess" class="">
     <h5 class="">$routeChangeSuccess</h5>
-    <p>Broadcasted after a route dependencies are resolved.
+    <div><p>Broadcasted after a route dependencies are resolved.
 <a href="ng.directive:ngView">ngView</a> listens for the directive
 to instantiate the controller and render the view.</p>
-    <h6 class="">Type:</h6>
-    <div class="">broadcast</div>
-    <h6 class="">Target:</h6>
-    <div class="">root scope</div>
-    <section class="">
-      <h5 class="">Parameters</h5>
+</div>
+    <div class="">
+      <h5 class="">Type:</h5>
+      <div class="">broadcast</div>
+    </div>
+    <div class="">
+      <h5 class="">Target:</h5>
+      <div class="">root scope</div>
+    </div>
   <table class="  ">
     <thead class="">
     <tr class="">
@@ -200,5 +203,95 @@ to instantiate the controller and render the view.</p>
       </tr>
     </tbody>
   </table>
-    </section></li>
+</li>
   </ul>
+<section class="">
+  <h4 class="">Methods</h4>
+  <ul class="">
+    <li id="foo" class="">
+      <h5 class=""><p><code>foo(argName);</code></p>
+</h5>
+      <div></div>
+  <table class="  ">
+    <thead class="">
+    <tr class="">
+      <th class="">Param</th>
+      <th class="">Type</th>
+      <th class="">Details</th>
+    </tr>
+    </thead>
+    <tbody class="">
+      <tr class="">
+        <td class="">
+          argName
+          <div><em class="">(optional)</em></div>
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>arg for foo</p>
+          <p><em class="">(default: carValue)</em></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+      <div class="">
+        <h5 class="">Method's <code class="">this</code>:</h5>
+        <p>MyButton</p>
+      </div>
+    </li>
+    <li id="chocolate" class="">
+      <h5 class=""><p><code>chocolate();</code></p>
+</h5>
+      <div></div>
+      <div class="">
+        <h5 class="">Returns:</h5>
+<span class="label type-hint type-hint-string ">string</span> - <ul>
+<li>Return value</li>
+</ul>
+      </div>
+    </li>
+    <li id="candy" class="">
+      <h5 class=""><p><code>candy(argName, argNum2);</code></p>
+</h5>
+      <div><p>Some function description</p>
+</div>
+  <table class="  ">
+    <thead class="">
+    <tr class="">
+      <th class="">Param</th>
+      <th class="">Type</th>
+      <th class="">Details</th>
+    </tr>
+    </thead>
+    <tbody class="">
+      <tr class="">
+        <td class="">
+          argName
+          <div><em class="">(optional)</em></div>
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>a brilliant description of the argument</p>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="">
+          argNum2
+          <div><em class="">(optional)</em></div>
+        </td>
+        <td class="">
+          string
+        </td>
+        <td class="">
+          <p>a second argument</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </li>
+    </ul>
+</section>

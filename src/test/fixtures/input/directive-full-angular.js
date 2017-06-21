@@ -6,9 +6,7 @@
  *
  * Nunjucks converts full URLs automatically.
  *
- * @ngdoc js
- *
- * @kind component
+ * @ngdoc directive
  *
  * @name MyButton
  *

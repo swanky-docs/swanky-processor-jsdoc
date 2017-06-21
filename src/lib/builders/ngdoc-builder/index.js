@@ -21,6 +21,12 @@ NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
 
   // Accept relative links to external files for examples
   .processor('examplesProcessor', require('./processors/examples-processor'))
+
+  .config(function(parseTagsProcessor, getInjectables) {
+    parseTagsProcessor.tagDefinitions =
+      parseTagsProcessor.tagDefinitions.concat(getInjectables(require('./tag-defs')));
+  })
+
   .config(function(renderDocsProcessor) {
     // Provide the css map to the template rendering engine
     renderDocsProcessor.extraData.styles = page.data.meta.cssMap;

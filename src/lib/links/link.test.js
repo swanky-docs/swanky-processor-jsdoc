@@ -1,6 +1,6 @@
 'use strict';
 
-var mockPackage = require('./mocks/mockPackage');
+var mockPackage = require('../mocks/mockPackage');
 var Dgeni = require('dgeni');
 
 describe('links inline tag handler', function() {

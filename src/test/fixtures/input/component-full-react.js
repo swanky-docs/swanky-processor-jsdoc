@@ -34,4 +34,56 @@
  * @param {string} employees[].department - The employee's department.
  */
 
-// Event is not yet supported
+
+class MyButton {
+
+  // The parent#member syntax is necessary to group the documentation
+  /**
+   * @method MyButton#foo
+   * @param {string} [argName=carValue] - arg for foo
+   * @fires MyButton#snowball
+   * @this MyButton
+   */
+  foo(argName = 'fooValue') {
+    this.emit('snowball', {
+      isPacked: this._snowball.isPacked
+    });
+    return 'bar' + argName;
+  };
+
+  /**
+   * @function
+   * @returns {string} - Return value
+   */
+  chocolate(argName = 'crumble') {
+    return argName;
+  }
+
+  /*
+   * Not supported (requires a template called method.template.html, which
+   * implies that the method is a top-level thing we wish to document
+   * (which is not the case. A method belongs to a module or class or object).
+   * @kind method
+   */
+  truffle(argName = 'crumble') {
+    return argName;
+  }
+
+  // Preferred syntax:
+  /**
+   * Some function description
+   * @param {string} [argName=carValue] - a brilliant description of the argument
+   */
+  candy(argName = 'pippa') {
+    return argName;
+  }
+}
+
+
+/**
+ * Snowball event.
+ *
+ * @event MyButton#snowball
+ * @type {FooObject}
+ * @property {boolean} isPacked - Indicates whether the snowball is tightly packed.
+ */

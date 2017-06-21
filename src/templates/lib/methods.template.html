@@ -1,0 +1,33 @@
+{% import "lib/macros.html" as lib -%}
+
+{%- if doc.methods %}
+<section class="{$ styles['api-section'] $}">
+  <h4 class="{$ styles.h4 $}">Methods</h4>
+  <ul class="{$ styles.methods $}">
+    {%- for method in doc.methods %}
+    <li id="{$ method.name $}" class="{$ styles.method $}">
+      <h5 class="{$ styles.h5 $}">{$ lib.functionSyntax(method) $}</h5>
+      <div>{$ method.description | marked $}</div>
+
+      {% if method.params %}
+      {$ lib.paramTable(method.params, styles) $}
+      {% endif %}
+
+      {% if method.returns %}
+      <div class="{$ styles.inline $}">
+        <h5 class="{$ styles.h5 $}">Returns:</h5>
+        {$ lib.typeInfo(method.returns, styles) $}
+      </div>
+      {% endif %}
+
+      {% if method.this %}
+      <div class="{$ styles.inline $}">
+        <h5 class="{$ styles.h5 $}">Method's <code class="{$ styles.code $}">this</code>:</h5>
+        {$ method.this | marked $}
+      </div>
+      {% endif %}
+    </li>
+    {% endfor -%}
+  </ul>
+</section>
+{%- endif -%}

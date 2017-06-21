@@ -2,8 +2,11 @@
 
 module.exports = [
   require('./area'),
+  require('./event'),
   require('./example'),
-  require('./module')
+  require('./method'),
+  require('./module'),
+  require('./this')
 ];
 
 /*
@@ -32,7 +35,7 @@ module.exports = [
         }
       },
 
-      // Can be a function or an array of functions that return the value for the tag.
+      // Can be a function or an array of functions that return the value for the tag. Or mutate the doc object in other ways
       // e.g: transforms: [ extractTypeTransform, extractNameTransform, wholeTagTransform ]
       transforms: function(doc, tag, value) {
         value = value || '';
