@@ -75,4 +75,21 @@ describe('swankyAngularDocs processing components', () => {
     return expect(swankyAngularDocs(...getInputFixture('component-full-react.js', 'react', true)).then(trimGeneratedOutput))
       .resolves.toEqual(expectedOutput);
   });
+
+
+  it('should generate full component docs with Svelte and liveEdit', () => {
+    const expectedOutput = getOutputFixture('component-full-svelte.html');
+
+    expect(expectedOutput).toContain('>Name:<');
+    expect(expectedOutput).toContain('description');
+    expect(expectedOutput).toContain('>Example<');
+    expect(expectedOutput).toContain('>Live Edit<');
+    expect(expectedOutput).toContain('>Deprecated API<');
+    expect(expectedOutput).toContain('>Arguments<');
+    expect(expectedOutput).toContain('>Events<');
+    expect(expectedOutput).toContain('>Methods<');
+
+    return expect(swankyAngularDocs(...getInputFixture('component-full-svelte.html', 'svelte', true)).then(trimGeneratedOutput))
+      .resolves.toEqual(expectedOutput);
+  });
 });

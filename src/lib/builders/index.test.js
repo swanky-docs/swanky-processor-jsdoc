@@ -1,6 +1,6 @@
 'use strict';
 
-const builderFactory = require('./index');
+const builderFactory = require('./index').builderFactory;
 
 describe('BuilderFactory', () => {
 

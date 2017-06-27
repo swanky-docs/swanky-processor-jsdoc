@@ -15,7 +15,7 @@ const builderMap = {
   // }
 };
 
-module.exports = function BuilderFactory(item, page, language, framework) {
+function BuilderFactory(item, page, language, framework) {
   let builderPath = (builderMap[language] || {})[framework];
 
   if (!builderPath) {
@@ -25,4 +25,9 @@ module.exports = function BuilderFactory(item, page, language, framework) {
   const Builder = require(builderPath);
 
   return new Builder(item, page);
+};
+
+module.exports = {
+  builderFactory: BuilderFactory,
+  builderMap
 };

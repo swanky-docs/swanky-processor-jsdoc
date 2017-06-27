@@ -35,15 +35,28 @@ function getFullNodeName(doc) {
 }
 
 
+function isNodeAFunction(doc) {
+  if (doc.codeNode) {
+    if (doc.codeNode.type === 'MethodDefinition') {
+      return true;
+    }
+    if (doc.codeNode.value && doc.codeNode.value.type === 'FunctionExpression') {
+      return true;
+    }
+  }
+  return false;
+}
+
+
 function setMethodPropertiesFromAST(doc) {
   // If this node does NOT have a kind OR method OR function specified, AND codeNode.kind == 'method'
-  // Output: doc.name
-  if (!doc.codeNode || doc.codeNode.type !== 'MethodDefinition') {
+  if (!isNodeAFunction(doc)) {
     return;
   }
 
   // If this comment-block does not have a name, try to derive one from the parent module + method/function name
-  if (!doc.name && !(doc.method || doc['function'])) {
+  doc.name = doc.name || doc.method || doc.function;
+  if (!doc.name) {
     doc.name = getFullNodeName(doc);
   }
 

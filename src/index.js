@@ -2,7 +2,7 @@
 
 const Dgeni = require('dgeni');
 const path = require('path');
-const builderFactory = require('./lib/builders');
+const builders = require('./lib/builders');
 
 const extensionLanguageMap = {
   '.ts': 'typescript',
@@ -10,8 +10,8 @@ const extensionLanguageMap = {
 
 function swankyJSDoc(page, item) {
   const language = getLanguage(item, page);
-  const framework = getFramework(item);
-  const builder = builderFactory(item, page, language, framework);
+  const framework = getFramework(item, language);
+  const builder = builders.builderFactory(item, page, language, framework);
   const packages = [builder.Package];
   const dgeni = new Dgeni(packages);
 
@@ -20,14 +20,14 @@ function swankyJSDoc(page, item) {
   });
 }
 
-function getFramework(item) {
-  const validFrameworkOptions = ['react', 'angular', 'js'];
+function getFramework(item, language) {
+  const validLanguageOptions = builders.builderMap;
 
   // Handle specific framework option if it exists
   const framework = (item.preprocessor['swanky-processor-jsdoc'].framework || 'js').toLowerCase();
 
-  if (validFrameworkOptions.indexOf(framework) === -1) {
-    throw Error(framework + ' is not a valid framework option. Using default JSDoc templates.');
+  if (!validLanguageOptions[language][framework]) {
+    throw Error(`${framework} is not a valid framework option for ${language}. Choose from [${Object.keys(validLanguageOptions[language])}]`);
   }
 
   return framework;
@@ -35,13 +35,13 @@ function getFramework(item) {
 
 
 function getLanguage(item, page) {
-  const validLanguageOptions = ['javascript', 'typescript'];  // In the future, TS code could live inside JS files, so we cannot rely *solely* on the file-type
+  const validLanguageOptions = builders.builderMap;
 
   // Handle specific framework option if it exists
   const language = (item.preprocessor['swanky-processor-jsdoc'].language || extensionLanguageMap[path.extname(page.filename)] || 'javascript').toLowerCase();
 
-  if (validLanguageOptions.indexOf(language) === -1) {
-    throw Error(language + ' is not a valid language option. Choose from ' + validLanguageOptions.join(', '));
+  if (!validLanguageOptions[language]) {
+    throw Error(`${language} is not a valid language option. Choose from ${Object.keys(validLanguageOptions)}`);
   }
 
   return language;

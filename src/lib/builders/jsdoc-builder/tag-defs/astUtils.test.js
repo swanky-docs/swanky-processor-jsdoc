@@ -2,7 +2,7 @@
 
 const util = require('./astUtils');
 
-fdescribe('astUtils', () => {
+describe('astUtils', () => {
 
   describe('setMethodPropertiesFromAST', () => {
 

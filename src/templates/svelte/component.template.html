@@ -1,0 +1,17 @@
+{% import "lib/macros.html" as lib -%}
+{% extends "api/api.template.html" %}
+
+{% block additional %}
+  {% block usage %}
+    {# we don't want to show this if live edit is enabled #}
+    {% if doc.usage and not isLiveEdit %}
+      <div class="{$ styles['code-snippet'] $}">
+        {% include "lib/usage.template.html" %}
+      </div>
+    {%- endif %}
+  {% endblock -%}
+
+  {% include "lib/params.template.html" %}
+  {% include "lib/events.template.html" %}
+  {% include "lib/methods.template.html" %}
+{% endblock %}
