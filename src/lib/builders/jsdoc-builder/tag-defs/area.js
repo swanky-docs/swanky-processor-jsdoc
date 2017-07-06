@@ -4,7 +4,7 @@ module.exports = function() {
   return {
     name: 'area',
     defaultFn: function(doc) {
-      let apiExtensions = ['js', 'jsx'];
+      let apiExtensions = ['js', 'jsx', 'html'];
 
       // Code files are put in the 'api' area
       // Other files compute their area from the first path segment

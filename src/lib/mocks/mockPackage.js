@@ -9,7 +9,7 @@ module.exports = function mockPackage() {
     require('dgeni-packages/links')
   ])
 
-  .factory(require('../link'))
+  .factory(require('../links/link'))
 
   // provide a mock log service
   .factory('log', function() { return require('./log')(false); })

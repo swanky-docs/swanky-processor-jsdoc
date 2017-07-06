@@ -35,6 +35,57 @@
  *
  */
 
+
+class MyButton {
+
+  // The parent#member syntax is necessary to group the documentation
+  /**
+   * @ngdoc method
+   * @name  MyButton#foo
+   * @param {string} [argName=carValue] - arg for foo
+   * @fires MyButton#$routeChangeSuccess
+   * @this MyButton
+   */
+  foo(argName = 'fooValue') {
+    this.emit('snowball', {
+      isPacked: this._snowball.isPacked
+    });
+    return 'bar' + argName;
+  };
+
+  /**
+   * @ngdoc function
+   * @name MyButton#chocolate
+   * @returns {string} - Return value
+   */
+  chocolate(argName = 'crumble') {
+    return argName;
+  }
+
+  /*
+   * Not supported (requires a template called method.template.html, which
+   * implies that the method is a top-level thing we wish to document
+   * (which is not the case. A method belongs to a module or class or object).
+   * @kind method
+   */
+  truffle(argName = 'crumble') {
+    return argName;
+  }
+
+  // Preferred syntax:
+  /**
+   * Some function description
+   * @ngdoc method
+   * @name MyButton#candy
+   * @param {string} [argName] - a brilliant description of the argument
+   * @param {string} [argNum2] - a second argument
+   */
+  candy(argName = 'pippa') {
+    return argName;
+  }
+}
+
+
 // The @name value (e.g. MyButton...) MUST match the name of another item in the documentation
 /**
  * @ngdoc event

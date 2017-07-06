@@ -1,8 +1,8 @@
-{%- macro paramTable(params, styles) %}
+{%- macro paramTable(params, styles, label = 'Param') %}
   <table class="{$ styles.table $} {$ styles['variables-matrix'] $} {$ styles['input-arguments'] $}">
     <thead class="{$ styles.thead $}">
     <tr class="{$ styles.tr $}">
-      <th class="{$ styles.th $}">Param</th>
+      <th class="{$ styles.th $}">{$ label $}</th>
       <th class="{$ styles.th $}">Type</th>
       <th class="{$ styles.th $}">Details</th>
     </tr>
@@ -13,16 +13,14 @@
         <td class="{$ styles.td $}">
           {$ param.name $}
           {% if param.alias %}| {$ param.alias $}{% endif %}
-          {% if param.optional %}
-            <div><em class="{$ styles.em $}">(optional)</em></div>
-          {% endif %}
+          {% if param.optional %}<div><em class="{$ styles.em $}">(optional)</em></div>{% endif %}
         </td>
         <td class="{$ styles.td $}">
           {$ param.typeList $}
         </td>
         <td class="{$ styles.td $}">
           {$ param.description | marked $}
-          {% if param.defaultValue %}<p><em>(default: {$ param.defaultValue $})</em></p>{% endif %}
+          {% if param.defaultValue %}<p><em class="{$ styles.em $}">(default: {$ param.defaultValue $})</em></p>{% endif %}
         </td>
       </tr>
     {% endfor %}
@@ -30,24 +28,25 @@
   </table>
 {% endmacro -%}
 
+{%- macro propertyTable(params, styles) %}{$ paramTable(params, styles, 'Property') $}{% endmacro -%}
+
 {%- macro functionSyntax(fn) %}
   {%- set sep = joiner(', ') -%}
   {% marked -%}
-  `{$ fn.name $}({%- for param in fn.params %}{$ sep() $}
-  {%- if param.type.optional %}[{% endif -%}
-  {$ param.name $}
-  {%- if param.type.optional %}]{% endif -%}
-{% endfor %});`
+    `{$ fn.name $}({%- for param in fn.params %}{$ sep() $}
+    {%- if param.type.optional %}[{% endif -%}
+    {$ param.name $}
+    {%- if param.type.optional %}]{% endif -%}
+    {% endfor %});`
   {%- endmarked %}
 {% endmacro -%}
 
 {%- macro typeInfo(fn, styles) -%}
-  <table class="{$ styles.table $} {$ styles['variables-matrix'] $} {$ styles['return-arguments'] $}">
-    <tr class="{$ styles.tr $}">
-      <td class="{$ styles.td $}">{$ typeList(fn.typeList, styles) $}</td>
-      <td class="{$ styles.td $}">{$ fn.description | marked $}</td>
-    </tr>
-  </table>
+  {$ typeList(fn.typeList, styles) $} - {$ fn.description | marked $}
+{%- endmacro -%}
+
+{% macro typeList(types, styles) -%} {# TODO: Why is this an anchor? It doesn't do anything! #}
+{% for typeName in types %}<span class="{$ typeName | typeClass $} {$ styles['type-hint'] $}">{$ typeName | escape $}</span>{% endfor %}
 {%- endmacro -%}
 
 

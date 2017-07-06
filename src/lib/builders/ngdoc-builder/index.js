@@ -21,6 +21,12 @@ NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
 
   // Accept relative links to external files for examples
   .processor('examplesProcessor', require('./processors/examples-processor'))
+
+  .config(function(parseTagsProcessor, getInjectables) {
+    parseTagsProcessor.tagDefinitions =
+      parseTagsProcessor.tagDefinitions.concat(getInjectables(require('./tag-defs')));
+  })
+
   .config(function(renderDocsProcessor) {
     // Provide the css map to the template rendering engine
     renderDocsProcessor.extraData.styles = page.data.meta.cssMap;
@@ -72,7 +78,7 @@ NGDocBuilder.prototype.Package = new Package('ngdoc-builder', [
       '${doc.area}/${ doc.docType }.template.html',
       '${doc.area}/${ doc.kind }.template.html',
       '${ doc.docType }.template.html',
-      '${ doc.kind }.template.html'
+      '${ doc.kind }.template.html',
     ].concat(templateEngine.templatePatterns);
 
     // add fileDependencies to webpack config
